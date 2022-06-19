@@ -1,0 +1,148 @@
+           <div class="container grid-title">
+                <p>{{section.settings.grid-title}}</p>
+            </div>
+
+             <section class="home-cards-grid container">
+               {% for block in section.blocks %}
+                <div> 
+                  <a href="{{block.settings.grid-link}}">
+                    <img src="{{block.settings.grid-image | img_url: "400x400"}}" alt="">
+                    <h3>{{block.settings.grid-card-title}}</h3>
+                  </a>
+      
+                </div>
+               {% endfor %}
+            </section>
+
+
+{% schema %}
+  {
+
+"blocks": [
+
+  {
+	"type": "text",
+	"name": "Main Grid Collection",
+	"settings": [
+
+		{
+			"id": "grid-image",
+			"type": "image_picker",
+			"label": "Grid Image"
+
+		},		
+		{
+			"id": "grid-link",
+			"type": "url",
+			"label": "Grid Link"
+						
+		},
+
+   		{
+			"id": "grid-card-title",
+			"type": "text",
+			"label": "Grid Card Title"
+		}
+	]
+	
+
+  }
+
+],
+"presets": [
+
+				{
+					"category": "Main Grid Collection",
+					"name": "main grid collection"
+				}
+
+		   ],
+"settings": [
+
+	   	{
+			"id": "grid-title",
+			"type": "text",
+			"label": "Grid Title"
+		}
+]
+
+
+}
+
+{% endschema %}
+
+
+
+
+
+
+<style>
+  
+  .grid-title p {
+  	
+    margin-top: 30px;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 26px;
+  }  
+
+.home-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 30px;
+      margin-top: 30px;
+  	  
+      
+  }
+  
+  .home-cards-grid div {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; 
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  } 
+  
+  .home-cards-grid img {
+      width: 100%;
+      margin-bottom: 10px;
+      
+  }
+  
+  .home-cards-grid h3 {
+      margin-bottom: 15px;
+      text-align: center;
+      font-family: 'Roboto', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 18px !important;
+  }
+  
+  .home-cards-grid a {
+      display: inline-block;
+      padding-top: 10px;
+      font-weight: bold;
+      font-size: 12px;
+      text-decoration: none;
+  }
+
+
+
+  @media only screen and (max-width: 768px) {
+    .home-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+     
+  }
+    
+    .home-cards-grid div { 
+    
+    	height: 250px;
+    }
+
+  }
+
+
+
+</style>
